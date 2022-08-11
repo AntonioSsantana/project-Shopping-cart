@@ -10,6 +10,6 @@ describe('1 - Teste a função fetchProducts', () => {
   });
 
   it('Executa a função fetchProducts() e com argumento "computador" e teste se fetch foi chamado', () => {
-    
+    expect(fetch()).toBeCalled()
   })
 });

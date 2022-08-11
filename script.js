@@ -1,6 +1,6 @@
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
-  img.className = 'item__image';
+  img.sclassName = 'item__image';
   img.src = imageSource;
   return img;
 };
