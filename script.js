@@ -50,7 +50,7 @@ window.onload = async () => {
     sectionItems.appendChild(product);
   });
 
-  const sectionCart = document.querySelector('.cart_items');
+  const olCart = document.querySelector('.cart_items');
 
   const appendCartItems = async ($IDPRODUCT) => {
     const data = await fetchItem($IDPRODUCT)
@@ -59,9 +59,9 @@ window.onload = async () => {
       sku: id,
       name: title,
       salePrice: price
-    }
-    console.log(createCartItemElement(productForCart))
+    } 
+    
   }
-
-  appendCartItems('MLB1341706310')
+  
+  appendCartItems('MLB1341706310');
 };
