@@ -38,6 +38,23 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   return li;
 };
 
+const appendCartItems = async ($IDPRODUCT) => {
+  const olCart = document.querySelector('.cart__items');
+  
+  const data = await fetchItem($IDPRODUCT);
+  const { id, title, price } = data;
+  
+  const productForCart = {
+    sku: id,
+    name: title,
+    salePrice: price,
+  };
+  
+  olCart.appendChild(createCartItemElement(productForCart));
+};
+
+appendCartItems('MLB1341706310');
+
 window.onload = async () => {
   const sectionItems = document.querySelector('.items');
   const data = await fetchProducts('computador');
@@ -49,19 +66,4 @@ window.onload = async () => {
     const product = createProductItemElement({ sku: id, name: title, image: thumbnail });
     sectionItems.appendChild(product);
   });
-
-  const olCart = document.querySelector('.cart_items');
-
-  const appendCartItems = async ($IDPRODUCT) => {
-    const data = await fetchItem($IDPRODUCT)
-    const { id, title, price } = data
-    const productForCart = {
-      sku: id,
-      name: title,
-      salePrice: price
-    } 
-    
-  }
-  
-  appendCartItems('MLB1341706310');
 };
