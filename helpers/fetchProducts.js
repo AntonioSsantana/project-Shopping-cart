@@ -1,6 +1,6 @@
 const fetchProducts = ($QUERY) => {
   if ($QUERY !== 'computador') {
-    throw new Error('Invalid Product');
+    throw new Error('You must provide an url');
   }
   const ENDPOINT = `https://api.mercadolibre.com/sites/MLB/search?q=${$QUERY}`;
   return fetch(ENDPOINT)
