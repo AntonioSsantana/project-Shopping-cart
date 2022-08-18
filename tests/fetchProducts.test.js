@@ -14,9 +14,12 @@ describe('1 - Teste a função fetchProducts', () => {
     expect(fetch).toBeCalled();
   })
 
-  it('Teste se, ao chamar a função fetchProducts com o argumento "computador" fetch utilize a url correta', async () => {
-    await fetchProducts('computador');
-    expect(fetch).toBeCalledWith('https://api.mercadolibre.com/sites/MLB/search?q=computador')
-  })
+  /*  it('Teste se, ao chamar a função fetchProducts com o argumento "computador" fetch utilize a url correta', async () => {
+     await fetchProducts('computador');
+     expect(fetch).toBeCalledWith('https://api.mercadolibre.com/sites/MLB/search?q=computador')
+   }) */
 
+  it('Testa se fetchProducts for chamado sem parâmetros retorne o erro "You must provide an url"', () => {
+    expect(fetchProducts()).rejects.toThrow(new Error('You must provide an url'));
+  });
 });
