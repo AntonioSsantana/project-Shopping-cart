@@ -20,15 +20,12 @@ const createProductItemElement = ({ sku, name, image }) => {
   section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
-
   return section;
 };
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
-const cartItemClickListener = (event) => {
-  // Seu código aqui
-};
+const cartItemClickListener = (event) => event.target.remove();
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
   const li = document.createElement('li');
@@ -38,32 +35,23 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   return li;
 };
 
-const appendCartItems = async ($IDPRODUCT) => {
-  const olCart = document.querySelector('.cart__items');
-  
-  const data = await fetchItem($IDPRODUCT);
-  const { id, title, price } = data;
-  
-  const productForCart = {
-    sku: id,
-    name: title,
-    salePrice: price,
-  };
-  
-  olCart.appendChild(createCartItemElement(productForCart));
-};
-
-appendCartItems('MLB1341706310');
-
 window.onload = async () => {
+  const sectionCart = document.querySelector('.cart__items');
   const sectionItems = document.querySelector('.items');
   const data = await fetchProducts('computador');
 
   const { results } = data;
 
   results.forEach((i) => {
-    const { id, title, thumbnail } = i;
+    const { id, title, thumbnail, price } = i;
     const product = createProductItemElement({ sku: id, name: title, image: thumbnail });
     sectionItems.appendChild(product);
+
+    const buttonAddToCart = product.getElementsByClassName('item__add')[0];
+    buttonAddToCart.addEventListener('click', () => {
+      const carShopping = createCartItemElement({ sku: id, name: title, salePrice: price });
+      console.log(carShopping);
+      sectionCart.appendChild(carShopping);
+    });
   });
 };
