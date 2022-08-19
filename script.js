@@ -36,19 +36,32 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
 };
 
 const clearCart = () => {
-  const cartListItem = document.querySelectorAll('.cart__item'); 
-  const clear = document.querySelector('.empty-cart'); 
+  const cartListItem = document.querySelectorAll('.cart__item');
+  const clear = document.querySelector('.empty-cart');
   clear.addEventListener('click', () => {
     cartListItem.forEach((item) => item.remove());
   });
 };
 
+const loadingMsg = () => {
+  const msgLoading = document.createElement('p');
+  const sectionItems = document.querySelector('.items');
+  
+  msgLoading.innerText = 'carregando';
+  msgLoading.classList.add('loading');
+  
+  sectionItems.appendChild(msgLoading);
+  setTimeout(() => {
+    sectionItems.removeChild(msgLoading);
+  }, 1000);
+};
+
 window.onload = async () => {
+  loadingMsg();
   const sectionCart = document.querySelector('.cart__items');
   const sectionItems = document.querySelector('.items');
   const data = await fetchProducts('computador');
   const { results } = data;
-
   results.forEach((i) => {
     const { id, title, thumbnail, price } = i;
     const product = createProductItemElement({ sku: id, name: title, image: thumbnail });
