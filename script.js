@@ -53,7 +53,6 @@ window.onload = async () => {
     const { id, title, thumbnail, price } = i;
     const product = createProductItemElement({ sku: id, name: title, image: thumbnail });
     sectionItems.appendChild(product);
-
     const buttonAddToCart = product.getElementsByClassName('item__add')[0];
     buttonAddToCart.addEventListener('click', () => {
       const carShopping = createCartItemElement({ sku: id, name: title, salePrice: price });
@@ -62,5 +61,5 @@ window.onload = async () => {
       clearCart();
     });
   });
-  createCartItemElement(getSavedCartItems('cartItems'))
+  createCartItemElement(getSavedCartItems('cartItems'));
 };
