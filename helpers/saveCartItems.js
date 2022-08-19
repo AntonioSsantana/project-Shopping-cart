@@ -1,8 +1,7 @@
 const saveCartItems = (id) => {
-  const acresentaCart = (id);
-  const salvaAcresentaCart = acresentaCart.innerHTML;
-  console.log(salvaAcresentaCart);
-  localStorage.setItem('cartItems', salvaAcresentaCart);
+  const cartItem = (id);
+  const cartItemSave = cartItem.innerHTML;
+  localStorage.setItem('cartItems', cartItemSave);
 };
 
 if (typeof module !== 'undefined') {
