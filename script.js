@@ -47,7 +47,6 @@ window.onload = async () => {
   const sectionCart = document.querySelector('.cart__items');
   const sectionItems = document.querySelector('.items');
   const data = await fetchProducts('computador');
-
   const { results } = data;
 
   results.forEach((i) => {
@@ -59,10 +58,8 @@ window.onload = async () => {
     buttonAddToCart.addEventListener('click', () => {
       const carShopping = createCartItemElement({ sku: id, name: title, salePrice: price });
       sectionCart.appendChild(carShopping);
-    
       saveCartItems(sectionCart);
       clearCart();
-    
     });
   });
 };
