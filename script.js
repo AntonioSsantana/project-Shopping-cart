@@ -50,7 +50,6 @@ window.onload = async () => {
     const buttonAddToCart = product.getElementsByClassName('item__add')[0];
     buttonAddToCart.addEventListener('click', () => {
       const carShopping = createCartItemElement({ sku: id, name: title, salePrice: price });
-      console.log(carShopping);
       sectionCart.appendChild(carShopping);
     });
   });
