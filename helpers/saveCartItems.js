@@ -1,5 +1,8 @@
 const saveCartItems = (id) => {
-  localStorage.setItem('cartItems', id);
+  const acresentaCart = (id);
+  const salvaAcresentaCart = acresentaCart.innerHTML;
+  console.log(salvaAcresentaCart);
+  localStorage.setItem('cartItems', salvaAcresentaCart);
 };
 
 if (typeof module !== 'undefined') {
