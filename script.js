@@ -62,4 +62,5 @@ window.onload = async () => {
       clearCart();
     });
   });
+  createCartItemElement(getSavedCartItems('cartItems'))
 };
